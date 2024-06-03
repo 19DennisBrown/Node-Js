@@ -12,17 +12,23 @@ const getContacts = (req, res)=>{
 // @desc Get individual contacts
 // @route GET /api/contacts/:id
 // @access public
-const getContact = (req, res)=>{
+const getContact = (req,res)=>{
   res.status(200).json({
-    message:`Get contact for ${req.params.id}`
+    message: `Get contact for ${req.params.id}`
   })
 }
 // @desc Get individual contacts
 // @route POST /api/contacts/:id
 // @access public
 const createContact = (req,res)=>{
+  console.log("The body contains ",req.body)
+  const {name, mail} = req.body
+  if(!name || !mail){
+    res.status(400)
+    throw new Error("Fill all fields")
+  }
   res.status(200).json({
-    message:"Create contact"
+    message:req.body
   })
 }
 // @desc update individual contacts
