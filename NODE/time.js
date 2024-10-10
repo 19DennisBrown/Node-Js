@@ -1,0 +1,5 @@
+
+
+exports.currentDatetime = ()=>{
+  return Date()
+}
